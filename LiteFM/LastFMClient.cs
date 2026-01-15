@@ -3,9 +3,6 @@ using LiteFM.Abstractions.ApiContracts;
 using LiteFM.Abstractions.Bases;
 using LiteFM.Extensions.JsonConverters;
 using System.Net.Http;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
@@ -18,6 +15,7 @@ namespace LiteFM
         public LastFMOptions Options { get; }
         public JsonSerializerOptions DefaultOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web)
         {
+            NumberHandling = JsonNumberHandling.AllowReadingFromString,
             TypeInfoResolver = LastFMJsonDefaultContext.Default,
             Converters = { new JsonBooleanConverter() }
         };
@@ -36,7 +34,7 @@ namespace LiteFM
             _httpClient = httpClient;
             Options = options;
         }
-        public async Task<Results<TResponse, TError>> RequestAsync<TRequest, TResponse, TError>(LastFMContractBase<TRequest, TResponse, TError> contrast, TRequest request, string? token = null) 
+        public async Task<Results<TResponse, TError>> RequestAsync<TRequest, TResponse, TError>(LastFMContractBase<TRequest, TResponse, TError> contrast, TRequest request, string? token = null)
             where TRequest : LastFMRequestBase
             where TResponse : LastFMResponseBase
             where TError : LastFMErrorBase
@@ -75,6 +73,7 @@ namespace LiteFM
     [JsonSerializable(typeof(GetSessionResponse))]
     [JsonSerializable(typeof(UpdateNowPlayingResponse))]
     [JsonSerializable(typeof(ScrobbleResponse))]
+    [JsonSerializable(typeof(GetUserInfoResponse))]
     [JsonSerializable(typeof(LastFMJsonError))]
     [JsonSerializable(typeof(CorrectedItem))]
     [JsonSerializable(typeof(IgnoredMessage))]

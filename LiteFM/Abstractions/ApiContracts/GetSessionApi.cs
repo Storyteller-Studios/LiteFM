@@ -23,8 +23,8 @@ namespace LiteFM.Abstractions.ApiContracts
                 [new("api_key", options.ApiKey), new("method", "auth.getSession"), new("token", request.Token)]);
             var result = new HttpRequestMessage()
             {
-                Method = HttpMethod.Post,
-                RequestUri = 
+                Method = HttpMethod.Get,
+                RequestUri =
                     new Uri($"https://ws.audioscrobbler.com/2.0/?method=auth.getSession&format=json&token={request.Token}&api_key={options.ApiKey}&api_sig={sig}")
             };
             return result;

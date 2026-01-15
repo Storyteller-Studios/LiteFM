@@ -1,13 +1,8 @@
 ﻿using LiteFM.Abstractions.Bases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LiteFM.Abstractions
 {
-    public class Results<TResponse, TError> 
+    public class Results<TResponse, TError>
         where TResponse : LastFMResponseBase
         where TError : LastFMErrorBase
     {

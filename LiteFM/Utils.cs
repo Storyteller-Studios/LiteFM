@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LiteFM
 {
     internal static class Utils
     {
         internal static MD5 MD5 = MD5.Create();
-        internal static string GetLastFMAPISignature(string secret, IEnumerable<KeyValuePair<string,string>> parameters)
+        internal static string GetLastFMAPISignature(string secret, IEnumerable<KeyValuePair<string, string>> parameters)
         {
             var processed = parameters.OrderBy(t => t.Key, StringComparer.Ordinal).Select(t => $"{t.Key}{t.Value}").ToList();
             var paramString = string.Concat(processed);
@@ -23,5 +22,8 @@ namespace LiteFM
             }
             return stringBuilder.ToString();
         }
+#if NETSTANDARD
+        internal static readonly DateTime UnixEpoch = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+#endif
     }
 }

@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net.Http;
 
 namespace LiteFM.Abstractions.Bases
 {
-    public abstract class LastFMContractBase<TRequest, TResponse, TError> 
+    public abstract class LastFMContractBase<TRequest, TResponse, TError>
         where TRequest : LastFMRequestBase
         where TResponse : LastFMResponseBase
         where TError : LastFMErrorBase

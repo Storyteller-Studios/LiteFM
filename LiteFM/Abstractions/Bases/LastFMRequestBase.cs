@@ -1,7 +1,4 @@
-﻿using System;
-using System.Net.Http;
-
-namespace LiteFM.Abstractions.Bases
+﻿namespace LiteFM.Abstractions.Bases
 {
     public abstract class LastFMRequestBase
     {
