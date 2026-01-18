@@ -2,6 +2,7 @@
 using LiteFM.Abstractions.Bases;
 using System;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace LiteFM.Api
@@ -18,13 +19,21 @@ namespace LiteFM.Abstractions.ApiContracts
     {
         public override HttpRequestMessage MapRequest(LastFMOptions options, string? token, GetUserInfoRequest request)
         {
-            if (request == null) throw new ArgumentNullException(nameof(request));
+            if (request == null && string.IsNullOrEmpty(token)) throw new ArgumentNullException(nameof(request));
             var result = new HttpRequestMessage()
             {
-                Method = HttpMethod.Get,
-                RequestUri =
-                    new Uri($"https://ws.audioscrobbler.com/2.0/?method=user.getinfo&user={request.User}&api_key={options.ApiKey}&format=json")
+                Method = HttpMethod.Get
             };
+            var sb = new StringBuilder($"https://ws.audioscrobbler.com/2.0/?method=user.getinfo&api_key={options.ApiKey}&format=json");
+            if (request != null)
+            {
+                sb.Append($"&user={request.User}");
+            }
+            if (token != null)
+            {
+                sb.Append($"&sk={token}");
+            }
+            result.RequestUri = new Uri(sb.ToString());
             return result;
         }
     }
