@@ -5,10 +5,22 @@
 	  <LangVersion>latest</LangVersion>
 	  <Nullable>enable</Nullable>
 	  <Platforms>AnyCPU;x64</Platforms>
+	  <Copyright>Copyright (c) 2026 Storyteller-Studios</Copyright>
+	  <Authors>Raspberry Kan</Authors>
+	  <Company>Storyteller Studios</Company>
+	  <Description>LiteFM is a minimal lightweighted and Native-AOT compatible Last.FM Api Client, which implemented track.updateNowPlaying, track.scrobble and user.getInfo.</Description>
+	  <PackageProjectUrl>https://github.com/Storyteller-Studios/LiteFM</PackageProjectUrl>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="System.Text.Json" Version="10.0.2" />
   </ItemGroup>
-
 </Project>
