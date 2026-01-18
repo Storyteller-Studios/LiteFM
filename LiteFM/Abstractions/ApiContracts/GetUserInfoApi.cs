@@ -40,7 +40,7 @@ namespace LiteFM.Abstractions.ApiContracts
 
     public sealed class GetUserInfoRequest : LastFMRequestBase
     {
-        public required string User;
+        public string? User;
     }
     public sealed class GetUserInfoResponse : LastFMResponseBase
     {
