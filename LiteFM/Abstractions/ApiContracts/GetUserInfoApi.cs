@@ -25,7 +25,7 @@ namespace LiteFM.Abstractions.ApiContracts
                 Method = HttpMethod.Get
             };
             var sb = new StringBuilder($"https://ws.audioscrobbler.com/2.0/?method=user.getinfo&api_key={options.ApiKey}&format=json");
-            if (request != null)
+            if (request?.User != null)
             {
                 sb.Append($"&user={request.User}");
             }
