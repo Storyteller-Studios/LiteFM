@@ -8,7 +8,7 @@ namespace LiteFM.Api
 {
     public static partial class LastFMApi
     {
-        public static readonly GetSessionApi GetSessionApi = new();
+        public static GetSessionApi GetSessionApi => new();
     }
 }
 

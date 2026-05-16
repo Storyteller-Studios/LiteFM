@@ -9,7 +9,7 @@ namespace LiteFM.Api
 {
     public static partial class LastFMApi
     {
-        public static readonly UpdateNowPlayingApi UpdateNowPlayingApi = new();
+        public static UpdateNowPlayingApi UpdateNowPlayingApi => new();
     }
 }
 
